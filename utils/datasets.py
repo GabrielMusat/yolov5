@@ -166,7 +166,8 @@ class LoadImages:
         elif os.path.isdir(p):
             files = sorted(glob.glob(os.path.join(p, '*.*')))  # dir
         elif os.path.isfile(p):
-            files = [p]  # files
+            with open(p) as f:
+                files = f.readlines()  # files
         else:
             raise Exception(f'ERROR: {p} does not exist')
 
